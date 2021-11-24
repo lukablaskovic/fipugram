@@ -1,30 +1,29 @@
 <template>
-  <div class="home">
-    <div class="jumbotron">
-      <img alt="Vue logo" src="../assets/logo.png" />
-      <p class="lead">
-        Ovo je Fipugram aplikacija izrađena za potrebe kolegija Programsko
-        Inženjerstvo
-      </p>
-      <hr class="my-4" />
-      <p>aplikacija izrađena u Vue.js-u</p>
-      <p class="lead">
-        <a class="btn btn-success btn-lg" href="/signup" role="button"
-          >Registriraj se</a
-        >
-      </p>
+  <InstagramStory />
+
+  <div class="row">
+    <div class="col-3"></div>
+    <div class="col-5">
+      <InstagramCard />
+      <InstagramCard />
+      <InstagramCard />
+      <InstagramCard />
+      <InstagramCard />
     </div>
+    <div class="col-4 text-muted"><b>Mi vam predlažemo</b></div>
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
-import HelloWorld from "@/components/HelloWorld.vue";
 
+import InstagramCard from "../components/InstagramCard.vue";
+import InstagramStory from "../components/InstagramStory.vue";
 export default {
   name: "Home",
   components: {
-    HelloWorld,
+    InstagramCard,
+    InstagramStory,
   },
 };
 </script>
