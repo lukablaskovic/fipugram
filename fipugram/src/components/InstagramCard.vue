@@ -1,6 +1,6 @@
 <template>
   <div class="row">
-    <div class="card">
+    <div class="card p-0 mb-3">
       <div class="card-header">
         <nav class="navbar navbar-light bg-light">
           <div class="container-fluid">
@@ -13,6 +13,9 @@
                 class="d-inline-block rounded-circle m-2"
               />
               autor
+            </a>
+            <a href="#">
+              <img class="w-25" src="@/assets/more.png" alt="" />
             </a>
           </div>
         </nav>

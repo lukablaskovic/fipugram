@@ -1,22 +1,23 @@
 <template>
-  <div class="row">
-    <div class="card">
-      <div class="card-header"></div>
-    </div>
+  <div class="c-story" style="width: 100px">
+    <img
+      class="rounded-circle p-1 m-1 border border-danger border-3"
+      src="https://picsum.photos/700"
+      alt=""
+      width="75"
+    />
+    <br />
+    <p class="text-center txt-small">random.fg.user</p>
   </div>
 </template>
 
 <script>
-//JS kod
 export default {
   name: "InstagramStory",
 };
 </script>
-<style scoped>
-a {
-  font-size: small;
-  font-weight: bold;
-}
+
+<style lang="scss">
 .txt-small {
   font-size: 0.7rem;
 }
