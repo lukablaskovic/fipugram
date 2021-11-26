@@ -14,11 +14,7 @@
         <InstagramStory />
         <InstagramStory />
       </div>
-      <InstagramCard />
-      <InstagramCard />
-      <InstagramCard />
-      <InstagramCard />
-      <InstagramCard />
+      <InstagramCard v-for="card in cards" :key="card" :info="card" />
     </div>
 
     <div class="col-3 mt-2 d-none d-xl-block">
@@ -43,8 +39,20 @@
 import InstagramCard from "../components/InstagramCard.vue";
 import InstagramStory from "../components/InstagramStory.vue";
 import InstagramRecommend from "../components/InstagramRecommend.vue";
+let cards = [];
+cards = [
+  "https://picsum.photos/500",
+  "https://picsum.photos/600",
+  "https://picsum.photos/700",
+];
+
 export default {
   name: "Home",
+  data: function () {
+    return {
+      cards: cards,
+    };
+  },
   components: {
     InstagramCard,
     InstagramStory,

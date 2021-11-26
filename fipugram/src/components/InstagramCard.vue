@@ -1,7 +1,7 @@
 <template>
   <div class="row">
     <div class="card p-0 mb-3">
-      <div class="card-header">
+      <div class="card-header p-0">
         <nav class="navbar navbar-light bg-light">
           <div class="container-fluid">
             <a class="navbar-brand" href="#">
@@ -21,7 +21,7 @@
         </nav>
       </div>
       <div class="card-body p-0">
-        <img class="card-img-top" src="https://picsum.photos/800" alt="" />
+        <img class="card-img-top" :src="info" alt="" />
       </div>
 
       <div class="container">
@@ -65,6 +65,7 @@
 <script>
 //JS kod
 export default {
+  props: ["info"],
   name: "InstagramCard",
 };
 </script>
