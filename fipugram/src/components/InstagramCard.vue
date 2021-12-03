@@ -21,7 +21,7 @@
         </nav>
       </div>
       <div class="card-body p-0">
-        <img class="card-img-top" :src="info" alt="" />
+        <img class="card-img-top" :src="info.url" alt="" />
       </div>
 
       <div class="container">
@@ -37,16 +37,18 @@
           </div>
         </div>
         <div class="d-flex flex-row">
-          <div class="justify-content-start mb-2"><b>Sviđa mi se: 891</b></div>
+          <div class="justify-content-start mb-2">
+            <b>Sviđa mi se: {{ info.likes }}</b>
+          </div>
         </div>
         <div class="d-flex flex-row">
           <div class="justify-content-start mb-2">
-            <b>random.person</b> I love this!
+            <b>author:</b> {{ info.description }}
           </div>
         </div>
         <div class="d-flex flex-row">
           <div class="justify-content-start text-muted txt-small">
-            PRIJE 1 DAN
+            <span>{{ info.time }}</span>
           </div>
         </div>
         <hr />

@@ -14,7 +14,11 @@
         <InstagramStory />
         <InstagramStory />
       </div>
-      <InstagramCard v-for="card in cards" :key="card" :info="card" />
+      <InstagramCard
+        v-for="card in filteredCards"
+        :key="card.url"
+        :info="card"
+      />
     </div>
 
     <div class="col-3 mt-2 d-none d-xl-block">
@@ -39,19 +43,42 @@
 import InstagramCard from "../components/InstagramCard.vue";
 import InstagramStory from "../components/InstagramStory.vue";
 import InstagramRecommend from "../components/InstagramRecommend.vue";
+import store from "@/store";
 let cards = [];
 cards = [
-  "https://picsum.photos/500",
-  "https://picsum.photos/600",
-  "https://picsum.photos/700",
+  {
+    url: "https://picsum.photos/500",
+    description: "having a nice day",
+    likes: "500",
+    time: "one hour ago",
+  },
+  {
+    url: "https://picsum.photos/600",
+    description: "wow look at this",
+    likes: "120",
+    time: "one century ago",
+  },
+  {
+    url: "https://picsum.photos/700",
+    description: "thats the way i like it",
+    likes: "40",
+    time: "few minutes ago",
+  },
 ];
 
 export default {
   name: "Home",
   data: function () {
     return {
-      cards: cards,
+      cards,
+      store,
     };
+  },
+  computed: {
+    filteredCards() {
+      let termin = this.store.searchTerm;
+      return this.cards.filter((card) => card.description.includes(termin));
+    },
   },
   components: {
     InstagramCard,

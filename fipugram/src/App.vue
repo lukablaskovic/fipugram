@@ -41,6 +41,7 @@
           <div class="container-fluid">
             <form class="form-inline my-2 my-lg-0">
               <input
+                v-model="store.searchTerm"
                 class="form-control me-2"
                 type="search"
                 placeholder="Pretraga"
@@ -55,6 +56,17 @@
 
   <router-view />
 </template>
+<script>
+import store from "@/store"; //Import komponente
+export default {
+  name: "app",
+  data() {
+    return {
+      store,
+    };
+  },
+};
+</script>
 
 <style lang="scss">
 #app {
