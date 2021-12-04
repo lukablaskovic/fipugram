@@ -26,15 +26,15 @@
       <div class="collapse navbar-collapse" id="navbarToggler">
         <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
           <li class="nav-item active p-1">
-            <router-link to="/">Home</router-link>
+            <router-link to="/">Početna</router-link>
           </li>
 
           <li class="nav-item p-1">
-            <router-link to="/login">Login</router-link>
+            <router-link to="/login">Prijavi se</router-link>
           </li>
 
           <li class="nav-item p-1">
-            <router-link to="/signup">Signup</router-link>
+            <router-link to="/signup">Registriraj se</router-link>
           </li>
         </ul>
         <nav class="navbar navbar-light bg-light">

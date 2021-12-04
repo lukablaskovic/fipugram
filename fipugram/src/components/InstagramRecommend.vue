@@ -5,14 +5,14 @@
         <div class="container-fluid nav-item">
           <a class="navbar-brand" href="#">
             <img
-              src="https://picsum.photos/300"
+              :src="info.url"
               alt=""
               width="40"
               height="40"
               class="d-inline-block rounded-circle m-2"
             />
             <div class="float-end p-2 text-start">
-              <span>random.person</span>
+              <span>{{ info.user }}</span>
               <br />
               <span class="text-muted txt-small">Novi na instagramu</span>
             </div>
@@ -29,6 +29,7 @@
 <script>
 //JS kod
 export default {
+  props: ["info"],
   name: "InstagramCard",
 };
 </script>

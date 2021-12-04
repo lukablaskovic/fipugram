@@ -6,13 +6,13 @@
           <div class="container-fluid">
             <a class="navbar-brand" href="#">
               <img
-                src="https://picsum.photos/200"
+                :src="info.user_url"
                 alt=""
                 width="40"
                 height="40"
                 class="d-inline-block rounded-circle m-2"
               />
-              autor
+              {{ info.user }}
             </a>
             <a href="#">
               <img class="w-25" src="@/assets/more.png" alt="" />
@@ -43,7 +43,7 @@
         </div>
         <div class="d-flex flex-row">
           <div class="justify-content-start mb-2">
-            <b>author:</b> {{ info.description }}
+            <b>{{ info.user }}:</b> {{ info.description }}
           </div>
         </div>
         <div class="d-flex flex-row">
