@@ -6,22 +6,6 @@
         <div class="col-sm"></div>
         <div class="col-sm">
           <form>
-            <div class="form-group">
-              <label for="exampleInputEmail1">Name</label>
-              <input
-                type="text"
-                class="form-control"
-                placeholder="Enter your name"
-              />
-            </div>
-            <div class="form-group">
-              <label for="exampleInputEmail1">Surname</label>
-              <input
-                type="text"
-                class="form-control"
-                placeholder="Enter your surname"
-              />
-            </div>
             <small id="emailHelp" class="form-text text-muted"
               >We'll never share your email and password with anyone
               else.</small
@@ -29,6 +13,7 @@
             <div class="form-group">
               <label for="exampleInputEmail1">Email address</label>
               <input
+                v-model="email"
                 type="email"
                 class="form-control"
                 id="exampleInputEmail1"
@@ -40,21 +25,25 @@
               <label for="exampleInputPassword1">Password</label>
               <input
                 type="password"
+                v-model="password"
                 class="form-control"
                 id="exampleInputPassword1"
                 placeholder="Password"
               />
             </div>
             <div class="form-group">
-              <label for="exampleInputPassword1">Confirm password</label>
+              <label for="exampleInputPassword2">Confirm password</label>
               <input
                 type="password"
+                v-model="passwordRepeat"
                 class="form-control"
-                id="exampleInputPassword1"
+                id="exampleInputPassword2"
                 placeholder="Confirm Password"
               />
             </div>
-            <button type="submit" class="btn btn-success mt-2">Submit</button>
+            <button type="button" @click="signup" class="btn btn-success mt-2">
+              Submit
+            </button>
           </form>
         </div>
         <div class="col-sm"></div>
@@ -62,3 +51,31 @@
     </div>
   </div>
 </template>
+<script>
+import { getAuth, createUserWithEmailAndPassword } from "@/firebase";
+export default {
+  name: "Signup",
+  data() {
+    //Ovo je funkcija!
+    return {
+      email: "",
+      password: "",
+      passwordRepeat: "",
+    };
+  },
+  methods: {
+    //Ovo je objekt u kojem se definiraju metode
+    signup() {
+      const auth = getAuth();
+      createUserWithEmailAndPassword(auth, this.email, this.password)
+        .then((userCredential) => {
+          // Signed in
+          console.log("Uspjesna registracija!");
+        })
+        .catch((error) => {
+          console.log("Doslo je do gresk!", error);
+        });
+    },
+  },
+};
+</script>
