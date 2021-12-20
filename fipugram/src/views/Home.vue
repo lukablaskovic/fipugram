@@ -25,6 +25,7 @@
       />
       <p class="text-muted">@2021 FIPUGRAM</p>
       <!-- Ime prezime zadatak iz videa -->
+      <!--
       <form class="form-inline my-2 my-lg-0">
         <input
           v-model="ime"
@@ -44,6 +45,7 @@
         />
       </form>
       <p>Rezultat: {{ nameSurname }}</p>
+      -->
       <!-- Ime prezime zadatak iz videa -->
     </div>
     <div class="col-1"></div>
@@ -145,11 +147,13 @@ export default {
       );
     },
     //Ime prezime zadatak iz videa
+    /*
     nameSurname() {
       let termin0 = this.ime;
       let termin1 = this.prezime;
       return termin0 + " " + termin1;
     },
+    */
   },
   components: {
     InstagramCard,

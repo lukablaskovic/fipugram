@@ -3,7 +3,7 @@
     <nav id="nav" class="navbar navbar-expand-lg navbar-light">
       <!-- Image and text -->
 
-      <a class="navbar-brand" href="#">
+      <router-link class="navbar-brand" to="/">
         <img
           src="@/assets/fipu_logo.png"
           height="40"
@@ -11,7 +11,7 @@
           alt=""
           loading="lazy"
         />
-      </a>
+      </router-link>
       <button
         class="navbar-toggler"
         type="button"
@@ -25,18 +25,19 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarToggler">
         <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-          <li class="nav-item active p-1">
-            <router-link to="/">Početna</router-link>
-          </li>
-
-          <li class="nav-item p-1">
+          <li v-show="!store.currentUser" class="nav-item p-1">
             <router-link to="/login">Prijavi se</router-link>
           </li>
 
-          <li class="nav-item p-1">
+          <li v-show="!store.currentUser" class="nav-item p-1">
             <router-link to="/signup">Registriraj se</router-link>
           </li>
+
+          <li v-show="store.currentUser" class="nav-item p-1">
+            <a href="#" @click.prevent="logout()">Odjava</a>
+          </li>
         </ul>
+
         <nav class="navbar navbar-light bg-light">
           <div class="container-fluid">
             <form class="form-inline my-2 my-lg-0">
@@ -57,13 +58,43 @@
   <router-view />
 </template>
 <script>
-import store from "@/store"; //Import komponente
+import store from "@/store";
+
+import { getAuth, onAuthStateChanged, signOut } from "@/firebase";
+
+const auth = getAuth();
+
+import router from "@/router";
+
+onAuthStateChanged(auth, (user) => {
+  if (user) {
+    console.log("LOGGED IN: " + user.email);
+    store.currentUser = user.email;
+    console.log("store.currentUser:", store.currentUser);
+  } else {
+    console.log("NO USER");
+    store.currentUser = null;
+    console.log("store.currentUser:", store.currentUser);
+
+    if (router.name !== "Login") {
+      router.push({ name: "Login" });
+    }
+  }
+});
+
 export default {
   name: "app",
   data() {
     return {
       store,
     };
+  },
+  methods: {
+    logout() {
+      signOut(auth).then(() => {
+        this.$router.push({ name: "Login" });
+      });
+    },
   },
 };
 </script>
